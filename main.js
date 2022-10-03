@@ -3,6 +3,9 @@ let infoInnerWrapper = document.getElementById("info-inner-wrapper")
 let info = document.getElementById("info")
 let infoMenuEventSettings = document.getElementById("info-menu-event-settings")
 let events = document.getElementById("events")
+let eventsInfo = document.getElementById("events-info")
+
+let eventsInfoTimeout;
 
 
 
@@ -106,6 +109,7 @@ function addEvent(type, title) {
         markEvent(evt, title)
     })
 
+    // Events
     // Events overview
     let evt = document.createElement("div")
     evt.setAttribute("name", type)
@@ -113,6 +117,8 @@ function addEvent(type, title) {
     evt.title = title
     evt.innerText = type
     events.appendChild(evt)
+    // Event popup-info
+    evt.onclick = () => {showEventInfo(type, title)}
 
     // Log settings
     let row = document.createElement("tr")
@@ -130,6 +136,38 @@ function addEvent(type, title) {
     row.appendChild(cellInput)
     row.appendChild(cellLabel)
     infoMenuEventSettings.appendChild(row)
+}
+
+
+function showEventInfo(type, title) {
+    // Shows/hides the info in a pop-up
+    if (eventsInfo.innerText === title && eventsInfo.classList.contains("events-info-visible")) {
+        eventsInfo.classList.remove("events-info-visible")
+        clearTimeout(eventsInfoTimeout)
+        eventsInfoTimeout = setTimeout(() => {
+            eventsInfo.innerText = ""
+        }, 500)
+    } else {
+        clearTimeout(eventsInfoTimeout)
+        eventsInfo.innerText = title
+        eventsInfo.classList.add("events-info-visible")
+    }
+
+    let matchingEvent = events.querySelector(`[name=${type}]`)
+    if (matchingEvent) {
+        let alreadyHighlighted = false
+        if (matchingEvent.classList.contains("event-highlighted")) {
+            alreadyHighlighted = true
+        }
+
+        for (evt of events.children) {
+            evt.classList.remove("event-highlighted")
+        }
+
+        if (!alreadyHighlighted) {
+            matchingEvent.classList.add("event-highlighted")
+        }
+    }
 }
 
 

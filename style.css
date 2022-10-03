@@ -11,6 +11,8 @@ body {
         justify-content: center;
         align-items: center;
         background: #FFF;
+        position: relative;
+        z-index: 200;
     }
         #btn {
             width: 50%;
@@ -18,6 +20,20 @@ body {
             font-size: calc(5vw);
         }
 
+    #events-info {
+        position: absolute;
+        padding: 10px;
+        margin: 1px;
+        max-width: 400px;
+        background: #0000;
+        color: #FFF0;
+        transition: background 0.5s, color 0.5s;
+        z-index: 1;
+    }
+        .events-info-visible {
+            background: #000D !important;
+            color: #FFF !important;
+        }
     #events {
         height: 40%;
         display: flex;
@@ -31,10 +47,17 @@ body {
             padding: 10px;
             margin: auto;
             margin-top: 10px;
-            border: 1px solid black;
+            border: 1px solid #000;
             border-radius: 4px;
-            z-index: -1;
         }
+            .event:hover {
+                box-shadow: inset 0 0 3px 2px #0007;
+                background: #00000009;
+            }
+            .event-highlighted {
+                box-shadow: inset 0 0 0 3px #000;
+                background: #00000020;
+            }
 
     #info-outer-wrapper {
         position: relative;
