@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+}
+
+#wrapper {
+    height: 100vh;
+}
+    #btn-wrapper {
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+    }
+        #btn {
+            width: 50%;
+            height: 50%;
+            font-size: calc(5vw);
+        }
+
+    #events {
+        height: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        flex-wrap: wrap;
+        box-shadow: inset 0 0 0 1px #000;
+    }
+        .event {
+            position: relative;
+            padding: 10px;
+            margin: auto;
+            margin-top: 10px;
+            border: 1px solid black;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+    #info-outer-wrapper {
+        position: relative;
+        height: 30%;
+        background: #FFF;
+    }
+        #info-inner-wrapper {
+            height: 100%;
+            overflow-y: scroll;
+            box-shadow: inset 0 0 0 1px #000;
+            background: #0001;
+        }
+            #info {
+                position: relative;
+                box-shadow: inset 0 0 0 1px #000;
+                padding: 5px;
+                min-height: calc(100% - (5px * 2));
+            }
+                #info > div {
+                    position: relative;
+                    margin-bottom: 3px;
+                }
+                    .highlight:before {
+                        content: "";
+                        z-index: -1;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        animation-name: highlight;
+                        animation-duration: 2s;
+                    }
+                #info > div:nth-child(odd) {
+                    background: #0001;
+                }
+                #info > div:nth-child(even) {
+                    background: #0002;
+                }
+                #info-menu-buttons {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    translate: 0 calc(-100% - 1px);
+                }
+                    .dropdown {
+                        width: 10px;
+                        height: 10px;
+                        background: #000;
+                    }
+                    #info-menu {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background: #0003;
+                        padding: 5px;
+                        margin: 1px;
+                        height: calc(100% - 12px);
+                        overflow-y: scroll;
+                    }
+                        .hidden {
+                            display: none;
+                        }
+
+
+
+/* Animations */
+@keyframes highlight {
+    from {background: #0F08; color: #FFF}
+    to {background: #0F00; color: #000}
+}

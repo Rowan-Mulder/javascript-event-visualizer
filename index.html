@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script defer src="main.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="btn-wrapper">
+            <button id="btn">Button</button>
+        </div>
+
+        <div id="events"></div>
+
+        <div id="info-outer-wrapper">
+            <div id="info-inner-wrapper">
+                <div id="info">
+                </div>
+            </div>
+
+            <div id="info-menu-buttons">
+                <button onclick="clearLog()">Clear log</button>
+                <button onclick="toggleVisibility('info-menu')">Log settings<span class="dropdown"></span></button>
+            </div>
+
+            <span id="info-menu" class="hidden">
+                <table id="info-menu-event-settings"></table>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
