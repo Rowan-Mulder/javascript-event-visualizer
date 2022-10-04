@@ -221,7 +221,7 @@ function showEventInfo(type, title) {
             alreadyHighlighted = true
         }
 
-        for (evt of events.children) {
+        for (let evt of events.children) {
             evt.classList.remove("event-highlighted")
         }
 
@@ -253,7 +253,7 @@ function markEvent(evt, title) {
         if (title) {
             div.title = title
         }
-        for (additionalInfo of additionalInfoList) {
+        for (let additionalInfo of additionalInfoList) {
             div.innerText += `, ${additionalInfo}`
         }
 
