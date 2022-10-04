@@ -11,26 +11,137 @@ let eventsInfoTimeout;
 
 // Event title info source: https://developer.mozilla.org/
 
+let eventsMouse = [
+    {
+        type: "click",
+        title: "An element receives a click event when a pointing device button (such as a mouse's primary mouse button) is both pressed and released while the pointer is located inside the element. Event property 'pointerType' will be limited to devices without a mouse.",
+        category: "mouse"
+    },
+    {
+        type: "wheel",
+        title: "The wheel event fires when the user rotates a wheel button on a pointing device (typically a mouse).",
+        category: "mouse",
+    },
+    {
+        type: "mousedown",
+        title: "The mousedown event is fired at an Element when a pointing device button is pressed while the pointer is inside the element.",
+        category: "mouse",
+    },
+    {
+        type: "mouseup",
+        title: "The mouseup event is fired at an Element when a button on a pointing device (such as a mouse or trackpad) is released while the pointer is located inside it.",
+        category: "mouse",
+    },
+    {
+        type: "mousemove",
+        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
+        category: "mouse",
+    },
+    {
+        type: "mouseover",
+        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
+        category: "mouse",
+    },
+    {
+        type: "mouseenter",
+        title: "The mouseenter event is fired at an Element when a pointing device (usually a mouse) is initially moved so that its hotspot is within the element at which the event was fired.",
+        category: "mouse",
+    },
+    {
+        type: "mouseout",
+        title: "The mouseout event is fired at an Element when a pointing device (usually a mouse) is used to move the cursor so that it is no longer contained within the element or one of its children.",
+        category: "mouse",
+    },
+    {
+        type: "mouseleave",
+        title: "The mouseleave event is fired at an Element when the cursor of a pointing device (usually a mouse) is moved out of it. Unlike 'mouseout' this does not bubble.",
+        category: "mouse",
+    },
+]
+
+let eventsGeneral = [
+    {
+        type: "contextmenu",
+        title: "The contextmenu event fires when the user attempts to open a context menu. This event is typically triggered by clicking the right mouse button, or by pressing the context menu key.",
+        category: "general",
+    },
+    {
+        type: "dblclick",
+        title: "The dblclick event fires when a pointing device button (such as a mouse's primary button) is double-clicked; that is, when it's rapidly clicked twice on a single element within a very short span of time.",
+        category: "general",
+    },
+    {
+        type: "focus",
+        title: "The focus event fires when an element has received focus. The event does not bubble, but the related focusin event that follows does bubble.",
+        category: "general",
+    },
+    {
+        type: "blur",
+        title: "The blur event fires when an element has lost focus.",
+        category: "general",
+    },
+    {
+        type: "pointerdown",
+        title: "The pointerdown event is fired when a pointer becomes active. For mouse, it is fired when the device transitions from no buttons pressed to at least one button pressed. For touch, it is fired when physical contact is made with the digitizer. For pen, it is fired when the stylus makes physical contact with the digitizer.",
+        category: "pointer",
+    },
+    {
+        type: "pointerup",
+        title: "The pointerup event is fired when a pointer is no longer active.",
+        category: "pointer",
+    },
+    {
+        type: "pointercancel",
+        title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling.",
+        category: "pointer",
+    },
+    {
+        type: "pointermove",
+        title: "The pointermove event is fired when a pointer changes coordinates, and the pointer has not been canceled by a browser touch-action.",
+        category: "pointer",
+    },
+    {
+        type: "pointerover",
+        title: "The pointerover event is fired when a pointing device is moved into an element's hit test boundaries.",
+        category: "pointer",
+    },
+    {
+        type: "pointerenter",
+        title: "(slightly different than pointerover) The pointerenter event fires when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a pointerdown event from a device that does not support hover",
+        category: "pointer",
+    },
+    {
+        type: "pointerout",
+        title: "The pointerout event is fired for several reasons including: pointing device is moved out of the hit test boundaries of an element; firing the pointerup event for a device that does not support hover (see pointerup); after firing the pointercancel event (see pointercancel); when a pen stylus leaves the hover range detectable by the digitizer.",
+        category: "pointer",
+    },
+    {
+        type: "pointerleave",
+        title: "The pointerleave event is fired when a pointing device is moved out of the hit test boundaries of an element. For pen devices, this event is fired when the stylus leaves the hover range detectable by the digitizer.",
+        category: "pointer",
+    },
+]
+
 let eventsTouchDevices = [
     {
         type: "touchstart",
         title: "The touchstart event is fired when one or more touch points are placed on the touch surface.",
-        category: "touchdevice",
+        category: "touch",
     },
     {
         type: "touchend",
         title: "The touchend event fires when one or more touch points are removed from the touch surface.",
-        category: "touchdevice",
+        category: "touch",
     },
     {
         type: "touchmove",
         title: "The touchmove event is fired when one or more touch points are moved along the touch surface.",
-        category: "touchdevice",
+        category: "touch",
     },
     {
         type: "touchcancel",
         title: "The touchcancel event is fired when one or more touch points have been disrupted in an implementation-specific manner (for example, too many touch points are created).",
-        category: "touchdevice",
+        category: "touch",
     },
 ]
 
@@ -144,24 +255,30 @@ let eventsGeneral = [
 // ]
 
 
-let ignoredEventLogs = [
+
+let defaultIgnoredEventLogs = [
+    "wheel",
     "mousemove",   "mouseover",   "mouseenter",   "mouseout",   "mouseleave",
     "pointermove", "pointerover", "pointerenter", "pointerout", "pointerleave",
+    "touchmove",
 ]
 
 
 
 
 
-for (let evt of eventsTouchDevices) {
-    addEvent(evt.type, evt.title, evt.category)
-}
 for (let evt of eventsMouse) {
     addEvent(evt.type, evt.title, evt.category)
 }
 for (let evt of eventsGeneral) {
     addEvent(evt.type, evt.title, evt.category)
 }
+for (let evt of eventsTouchDevices) {
+    addEvent(evt.type, evt.title, evt.category)
+}
+// for (let evt of eventsPenDevices) {
+//     addEvent(evt.type, evt.title, evt.category)
+// }
 
 
 
@@ -187,8 +304,8 @@ function addEvent(type, title, category) {
     let cellInput = document.createElement("td")
     let check = document.createElement("input")
     check.type = "checkbox"
-    check.checked = ignoredEventLogs.indexOf(type) === -1
-    check.onchange = () => {toggleArrayItem(ignoredEventLogs, type)}
+    check.checked = defaultIgnoredEventLogs.indexOf(type) === -1
+    check.onchange = () => {toggleArrayItem(defaultIgnoredEventLogs, type)}
     cellInput.appendChild(check)
 
     let cellLabel = document.createElement("td")
@@ -245,7 +362,7 @@ function markEvent(evt, title) {
     }
 
     // Logging
-    if (ignoredEventLogs.indexOf(evt.type) === -1) {
+    if (defaultIgnoredEventLogs.indexOf(evt.type) === -1) {
         let div = document.createElement("div")
         div.classList.add("highlight")
 
