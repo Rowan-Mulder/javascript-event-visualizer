@@ -282,12 +282,6 @@ function clearLog() {
 
 
 
-document.addEventListener(("contextmenu"), (evt) => {
-    evt.preventDefault()
-})
-
-
-
 
 
 function toggleVisibility(id) {
@@ -311,3 +305,30 @@ function toggleArrayItem(array, item) {
         array.push(item)
     }
 }
+
+
+
+
+
+// Global events
+// Hides event info popup
+document.addEventListener("click", (evt) => {
+    if (!(eventsInfo.innerText !== "" && !evt.target.closest(".event") && eventsInfo.classList.contains("events-info-visible"))) {
+        return
+    }
+
+    eventsInfo.classList.remove("events-info-visible")
+    clearTimeout(eventsInfoTimeout)
+    eventsInfoTimeout = setTimeout(() => {
+        eventsInfo.innerText = ""
+    }, 500)
+
+    for (let evt of events.children) {
+        evt.classList.remove("event-highlighted")
+    }
+})
+
+// Removes contextmenu
+document.addEventListener(("contextmenu"), (evt) => {
+    evt.preventDefault()
+})
