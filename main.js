@@ -289,7 +289,7 @@ function addEvent(type, title, category) {
 
     // Events
     // Events overview
-    let evt = document.createElement("div")
+    let evt = document.createElement("button")
     evt.setAttribute("name", type)
     evt.classList.add("event")
     evt.title = title
