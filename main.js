@@ -1,7 +1,7 @@
 let btn = document.getElementById("btn")
 let infoInnerWrapper = document.getElementById("info-inner-wrapper")
 let info = document.getElementById("info")
-let infoMenuEventSettings = document.getElementById("info-menu-event-settings")
+let logSettingsEventSettings = document.getElementById("log-settings-event-settings")
 let events = document.getElementById("events")
 let eventsInfo = document.getElementById("events-info")
 
@@ -313,7 +313,7 @@ function addEvent(type, title, category) {
 
     row.appendChild(cellInput)
     row.appendChild(cellLabel)
-    infoMenuEventSettings.appendChild(row)
+    logSettingsEventSettings.appendChild(row)
 }
 
 
@@ -346,6 +346,24 @@ function showEventInfo(type, title) {
             matchingEvent.classList.add("event-highlighted")
         }
     }
+}
+
+function highlightEvent(type) {
+    let matchingEvent = events.querySelector(`[name=${type}]`)
+    if (matchingEvent) {
+        for (let evt of events.children) {
+            evt.classList.remove("event-selected")
+        }
+
+        matchingEvent.classList.add("event-selected")
+    }
+}
+
+function showPopupInfo(title, popupElement, popupTimer) {
+    // Fades in popup info
+    clearTimeout(popupTimer)
+    popupElement.innerText = title
+    popupElement.classList.add("popup-info-visible")
 }
 
 

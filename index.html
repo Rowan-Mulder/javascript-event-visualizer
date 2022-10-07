@@ -14,23 +14,26 @@
             <button id="btn">Button</button>
         </div>
 
-        <div id="events-info"></div>
-        <div id="events"></div>
+        <div id="middle-section">
+            <div class="popup-info" id="events-info"></div>
+            <div class="popup-info" id="events-property-info"></div>
+
+            <div id="events"></div>
+        </div>
 
         <div id="info-outer-wrapper">
-            <div id="info-inner-wrapper">
-                <div id="info">
-                </div>
+            <div id="log-settings-buttons">
+                <button onclick="clearLog()" id="btn-clear-log">Clear log</button>
+                <button onclick="toggleVisibility('log-settings')" id="btn-log-settings">Log settings<span class="dropdown"></span></button>
             </div>
 
-            <div id="info-menu-buttons">
-                <button onclick="clearLog()">Clear log</button>
-                <button onclick="toggleVisibility('info-menu')">Log settings<span class="dropdown"></span></button>
-            </div>
-
-            <span id="info-menu" class="hidden">
-                <table id="info-menu-event-settings"></table>
+            <span id="log-settings" class="hidden">
+                <table id="log-settings-event-settings"></table>
             </span>
+
+            <div id="info-inner-wrapper">
+                <div id="info"></div>
+            </div>
         </div>
     </div>
 </body>

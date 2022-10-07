@@ -97,7 +97,7 @@ body {
                 #info > div:nth-child(even) {
                     background: #0002;
                 }
-                #info-menu-buttons {
+                #log-settings-buttons {
                     position: absolute;
                     top: 0;
                     right: 0;
@@ -108,7 +108,7 @@ body {
                         height: 10px;
                         background: #000;
                     }
-                    #info-menu {
+                    #log-settings {
                         position: absolute;
                         top: 0;
                         right: 0;
