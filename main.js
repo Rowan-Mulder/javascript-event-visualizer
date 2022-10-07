@@ -459,7 +459,9 @@ document.addEventListener("click", (evt) => {
     }
 })
 
-// Removes contextmenu
+// Removes contextmenu for button
 document.addEventListener(("contextmenu"), (evt) => {
-    evt.preventDefault()
+    if (evt.target.id === "btn") {
+        evt.preventDefault()
+    }
 })
