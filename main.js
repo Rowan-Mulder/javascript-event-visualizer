@@ -254,6 +254,16 @@ let eventsGeneral = [
 //     },
 // ]
 
+// Niche events
+// drag: The drag event is fired every few hundred milliseconds as an element or text selection is being dragged by the user.
+// dragstart: The dragstart event is fired when the user starts dragging an element or text selection.
+//     personal experience: Doesn't trigger when the element is a button
+// dragend: The dragend event is fired when a drag operation is being ended (by releasing a mouse button or hitting the escape key).
+//     personal experience: Doesn't trigger when the element is a button, unless specifically when selection is allowed by CSS property 'user-select' and a selection starting from any text contains at least part of the button text.
+// dragenter: The dragenter event is fired when a dragged element or text selection enters a valid drop target.
+// dragleave: The dragleave event is fired when a dragged element or text selection leaves a valid drop target.
+// dragover: The dragover event is fired when an element or text selection is being dragged over a valid drop target (every few hundred milliseconds).
+// drop: The drop event is fired when an element or text selection is dropped on a valid drop target.
 
 
 let defaultIgnoredEventLogs = [
@@ -309,7 +319,7 @@ function addEvent(type, title, category) {
     cellInput.appendChild(check)
 
     let cellLabel = document.createElement("td")
-    cellLabel.innerText = type
+    cellLabel.innerText = type // insert label element instead
 
     row.appendChild(cellInput)
     row.appendChild(cellLabel)
