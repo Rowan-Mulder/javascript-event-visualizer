@@ -4,8 +4,10 @@ let info = document.getElementById("info")
 let logSettingsEventSettings = document.getElementById("log-settings-event-settings")
 let events = document.getElementById("events")
 let eventsInfo = document.getElementById("events-info")
+let eventsPropertyInfo = document.getElementById("events-property-info")
 
 let eventsInfoTimeout;
+let eventsPropertyInfoTimeout;
 
 
 
@@ -335,14 +337,9 @@ function showEventInfo(type, title) {
     highlightEvent(type)
 }
 
-        for (let evt of events.children) {
-            evt.classList.remove("event-highlighted")
-        }
-
-        if (!alreadyHighlighted) {
-            matchingEvent.classList.add("event-highlighted")
-        }
-    }
+function showEventPropertyInfo(title) {
+    // Shows/hides the event property info in a popup
+    showPopupInfo(title, eventsPropertyInfo, eventsPropertyInfoTimeout)
 }
 
 function highlightEvent(type) {
@@ -381,13 +378,15 @@ function markEvent(evt, title) {
         let div = document.createElement("div")
         div.classList.add("highlight")
 
-        div.innerText = `type: ${evt.type}`
-        if (title) {
-            div.title = title
+        if (!title) {
+            console.error(`Missing title for event ${evt.type}`)
         }
-        for (let additionalInfo of additionalInfoList) {
-            div.innerText += `, ${additionalInfo}`
+
+        div.innerHTML = `<button class="logging-info logging-info-type" onclick="showEventInfo('${evt.type}', '${title}')">type: <b>${evt.type}</b></button>`
+        for (let loggingInfo of loggingInfoList) {
+            div.innerHTML += `, <button class="logging-info logging-info-additional" title="${loggingInfo.title}" onclick="showEventPropertyInfo('${loggingInfo.title}')">${loggingInfo.text}</button>`
         }
+        div.title = title
 
         info.appendChild(div)
         infoInnerWrapper.scrollTo(0, infoInnerWrapper.scrollHeight)

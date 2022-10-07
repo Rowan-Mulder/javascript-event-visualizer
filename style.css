@@ -80,16 +80,16 @@ body {
                     position: relative;
                     margin-bottom: 3px;
                 }
-                    .highlight:before {
-                        content: "";
-                        z-index: -1;
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        animation-name: highlight;
-                        animation-duration: 2s;
+                    .logging-info {
+                        border: 1px solid #0004;
+                        border-radius: 5px;
+                        padding-inline: 2px;
+                        margin-inline: -2px;
+                        background-color: #FFF7;
+                        user-select: text;
+                    }
+                    .logging-info:hover {
+                        background-color: #FFFE;
                     }
                 #info > div:nth-child(odd) {
                     background: #0001;
