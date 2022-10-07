@@ -328,25 +328,12 @@ function addEvent(type, title, category) {
 
 
 function showEventInfo(type, title) {
-    // Shows/hides the info in a pop-up
-    if (eventsInfo.innerText === title && eventsInfo.classList.contains("events-info-visible")) {
-        eventsInfo.classList.remove("events-info-visible")
-        clearTimeout(eventsInfoTimeout)
-        eventsInfoTimeout = setTimeout(() => {
-            eventsInfo.innerText = ""
-        }, 500)
-    } else {
-        clearTimeout(eventsInfoTimeout)
-        eventsInfo.innerText = title
-        eventsInfo.classList.add("events-info-visible")
-    }
+    // Shows/hides the general event info in a popup
+    showPopupInfo(title, eventsInfo, eventsInfoTimeout)
 
-    let matchingEvent = events.querySelector(`[name=${type}]`)
-    if (matchingEvent) {
-        let alreadyHighlighted = false
-        if (matchingEvent.classList.contains("event-highlighted")) {
-            alreadyHighlighted = true
-        }
+    // Highlights matching event (similar to focus-visible, also triggered when clicking an event in the log)
+    highlightEvent(type)
+}
 
         for (let evt of events.children) {
             evt.classList.remove("event-highlighted")
