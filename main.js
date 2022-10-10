@@ -357,18 +357,32 @@ function toggleArrayItem(array, item) {
 // Global events
 // Hides event info popup
 document.addEventListener("click", (evt) => {
-    if (!(eventsInfo.innerText !== "" && !evt.target.closest(".event") && eventsInfo.classList.contains("events-info-visible"))) {
-        return
+    // Hides event info popup when clicking away
+    if (eventsInfo.innerText !== "" && (!evt.target.closest(".event") && !evt.target.closest("#events-info") && !evt.target.closest(".logging-info-type")) && eventsInfo.classList.contains("popup-info-visible")) {
+        eventsInfo.classList.remove("popup-info-visible")
+        clearTimeout(eventsInfoTimeout)
+        eventsInfoTimeout = setTimeout(() => {
+            eventsInfo.innerText = ""
+        }, 500)
+
+        for (let evt of events.children) {
+            evt.classList.remove("event-selected")
+        }
     }
 
-    eventsInfo.classList.remove("events-info-visible")
-    clearTimeout(eventsInfoTimeout)
-    eventsInfoTimeout = setTimeout(() => {
-        eventsInfo.innerText = ""
-    }, 500)
+    // Hides event property info popup when clicking away
+    if (eventsPropertyInfo.innerText !== "" && (!evt.target.closest("#events-property-info") && !evt.target.closest(".logging-info-additional")) && eventsPropertyInfo.classList.contains("popup-info-visible")) {
+        eventsPropertyInfo.classList.remove("popup-info-visible")
+        console.log(evt.target.closest)
+        clearTimeout(eventsPropertyInfoTimeout)
+        eventsPropertyInfoTimeout = setTimeout(() => {
+            eventsPropertyInfo.innerText = ""
+        }, 500)
+    }
 
-    for (let evt of events.children) {
-        evt.classList.remove("event-highlighted")
+    // Hides log settings when clicking away
+    if (!document.querySelector("#log-settings").classList.contains("hidden") && (!evt.target.closest("#log-settings") && !evt.target.closest("#btn-log-settings"))) {
+        toggleVisibility('log-settings')
     }
 })
 
