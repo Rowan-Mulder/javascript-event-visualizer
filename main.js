@@ -268,28 +268,28 @@ function showPopupInfo(title, popupElement, popupTimer, isEncoded) {
 function markEvent(evt, title) {
     let loggingInfoList = []
     if (evt.pointerType) {
-        loggingInfoList.push({text: `pointerType: ${(evt.pointerType) ? evt.pointerType : "undefined (triggered programmatically)"}`, title: "Indicates the device type that caused the event (mouse, pen, touch, or \"\" if the device type cannot be detected by the browser)."}) // mouse/pen/touch (javascript triggered: "" for .click(), undefined for .dispatchEvent())
+        loggingInfoList.push({text: `pointerType: ${(evt.pointerType) ? evt.pointerType : "undefined (triggered programmatically)"}`, title: `Indicates the device type that caused the event (mouse, pen, touch, or "" if the device type cannot be detected by the browser).`}) // mouse/pen/touch (javascript triggered: "" for .click(), undefined for .dispatchEvent())
     }
     if (evt.isPrimary) {
-        loggingInfoList.push({text: `isPrimary: ${evt.isPrimary}`, title: "Indicates if the pointer represents the primary pointer of this pointer type in a multi-pointer scenario (such as a touch screen that supports more than one touch point)"})
+        loggingInfoList.push({text: `isPrimary: ${evt.isPrimary}`, title: `Indicates if the pointer represents the primary pointer of this pointer type in a multi-pointer scenario (such as a touch screen that supports more than one touch point)`})
     }
     if (evt.pressure) { // Pressure of a stylus (interestingly defaulted to 0.5 for PC and 1.0 for mobile).
-        loggingInfoList.push({text: `pressure: ${evt.pressure}`, title: "The normalized pressure of the pointer input in the range of 0 to 1, where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively."})
+        loggingInfoList.push({text: `pressure: ${evt.pressure}`, title: `The normalized pressure of the pointer input in the range of 0 to 1, where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively.`})
     }
     if (evt.twist || evt.twist === 0) {
-        loggingInfoList.push({text: `twist: ${evt.twist}`, title: "The clockwise rotation of the pointer (e.g. pen stylus) around its major axis in degrees, with a value in the range 0 to 359."})
+        loggingInfoList.push({text: `twist: ${evt.twist}`, title: `The clockwise rotation of the pointer (e.g. pen stylus) around its major axis in degrees, with a value in the range 0 to 359.`})
     }
     if (evt.button || evt.button === 0) {
-        loggingInfoList.push({text: `button: ${evt.button}`, title: "The button number that was pressed (if applicable) when the mouse event was fired."}) // Seems to be -1 for contextmenu, pointermove and gotpointercapture events on mobile
+        loggingInfoList.push({text: `button: ${evt.button}`, title: `The button number that was pressed (if applicable) when the mouse event was fired.`}) // Seems to be -1 for contextmenu, pointermove and gotpointercapture events on mobile
     }
     if (evt.buttons || evt.buttons === 0) {
-        loggingInfoList.push({text: `buttons: ${evt.buttons}`, title: "The buttons being pressed (if any) when the mouse event was fired."})
+        loggingInfoList.push({text: `buttons: ${evt.buttons}`, title: `The buttons being pressed (if any) when the mouse event was fired.`})
     }
     if (evt.altKey) {
-        loggingInfoList.push({text: `altKey: ${evt.altKey}`, title: "Returns true if the alt key was down when the mouse event was fired."})
+        loggingInfoList.push({text: `altKey: ${evt.altKey}`, title: `Returns true if the alt key was down when the mouse event was fired.`})
     }
     if (evt.shiftKey) {
-        loggingInfoList.push({text: `shiftKey: ${evt.shiftKey}`, title: "Returns true if the shift key was down when the mouse event was fired."})
+        loggingInfoList.push({text: `shiftKey: ${evt.shiftKey}`, title: `Returns true if the shift key was down when the mouse event was fired.`})
     }
 
     // Logging
@@ -304,7 +304,7 @@ function markEvent(evt, title) {
         div.innerHTML = `<button class="logging-info logging-info-type" onclick="showEventInfo('${evt.type}', '${encodedTitle}', true)">type: <b>${evt.type}</b></button>`
         for (let loggingInfo of loggingInfoList) {
             let encodedLoggingInfoTitle = extremeCharacterEncoder(loggingInfo.title)
-            div.innerHTML += `, <button class="logging-info logging-info-additional" title="${loggingInfo.title}" onclick="showEventPropertyInfo('${encodedLoggingInfoTitle}', true)">${loggingInfo.text}</button>`
+            div.innerHTML += `, <button class="logging-info logging-info-additional" title="${loggingInfo.title.replaceAll('"', "&quot;")}" onclick="showEventPropertyInfo('${encodedLoggingInfoTitle}', true)">${loggingInfo.text}</button>`
         }
         div.title = title
 
