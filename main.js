@@ -229,17 +229,17 @@ function addEvent(type, title, category) {
 }
 
 
-function showEventInfo(type, title) {
+function showEventInfo(type, title, isEncoded = false) {
     // Shows/hides the general event info in a popup
-    showPopupInfo(title, eventsInfo, eventsInfoTimeout)
+    showPopupInfo(title, eventsInfo, eventsInfoTimeout, isEncoded)
 
     // Highlights matching event (similar to focus-visible, also triggered when clicking an event in the log)
     highlightEvent(type)
 }
 
-function showEventPropertyInfo(title) {
+function showEventPropertyInfo(title, isEncoded = false) {
     // Shows/hides the event property info in a popup
-    showPopupInfo(title, eventsPropertyInfo, eventsPropertyInfoTimeout)
+    showPopupInfo(title, eventsPropertyInfo, eventsPropertyInfoTimeout, isEncoded)
 }
 
 function highlightEvent(type) {
@@ -248,15 +248,14 @@ function highlightEvent(type) {
         for (let evt of events.children) {
             evt.classList.remove("event-selected")
         }
-
         matchingEvent.classList.add("event-selected")
     }
 }
 
-function showPopupInfo(title, popupElement, popupTimer) {
+function showPopupInfo(title, popupElement, popupTimer, isEncoded) {
     // Fades in popup info
     clearTimeout(popupTimer)
-    popupElement.innerText = extremeCharacterDecoder(title)
+    popupElement.innerText = (isEncoded) ? extremeCharacterDecoder(title) : title
     popupElement.classList.add("popup-info-visible")
 }
 
@@ -294,10 +293,10 @@ function markEvent(evt, title) {
             console.error(`Missing title for event ${evt.type}`)
         }
         let encodedTitle = extremeCharacterEncoder(title)
-        div.innerHTML = `<button class="logging-info logging-info-type" onclick="showEventInfo('${evt.type}', '${encodedTitle}')">type: <b>${evt.type}</b></button>`
+        div.innerHTML = `<button class="logging-info logging-info-type" onclick="showEventInfo('${evt.type}', '${encodedTitle}', true)">type: <b>${evt.type}</b></button>`
         for (let loggingInfo of loggingInfoList) {
             let encodedLoggingInfoTitle = extremeCharacterEncoder(loggingInfo.title)
-            div.innerHTML += `, <button class="logging-info logging-info-additional" title="${loggingInfo.title}" onclick="showEventPropertyInfo('${encodedLoggingInfoTitle}')">${loggingInfo.text}</button>`
+            div.innerHTML += `, <button class="logging-info logging-info-additional" title="${loggingInfo.title}" onclick="showEventPropertyInfo('${encodedLoggingInfoTitle}', true)">${loggingInfo.text}</button>`
         }
         div.title = title
 
@@ -355,7 +354,6 @@ function toggleArrayItem(array, item) {
 
 
 // Global events
-// Hides event info popup
 document.addEventListener("click", (evt) => {
     // Hides event info popup when clicking away
     if (eventsInfo.innerText !== "" && (!evt.target.closest(".event") && !evt.target.closest("#events-info") && !evt.target.closest(".logging-info-type")) && eventsInfo.classList.contains("popup-info-visible")) {
