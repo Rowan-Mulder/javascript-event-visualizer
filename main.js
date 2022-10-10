@@ -283,6 +283,9 @@ function markEvent(evt, title) {
     if (evt.altKey) {
         loggingInfoList.push({text: `altKey: ${evt.altKey}`, title: "Returns true if the alt key was down when the mouse event was fired."})
     }
+    if (evt.shiftKey) {
+        loggingInfoList.push({text: `shiftKey: ${evt.shiftKey}`, title: "Returns true if the shift key was down when the mouse event was fired."})
+    }
 
     // Logging
     if (defaultIgnoredEventLogs.indexOf(evt.type) === -1) {
