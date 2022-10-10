@@ -152,14 +152,6 @@ let eventsTouchDevices = [
     },
 ]
 
-// let eventsPenDevices = [
-//     {
-//         type: "",
-//         title: "",
-//         category: "",
-//     },
-// ]
-
 // Niche events
 // drag: The drag event is fired every few hundred milliseconds as an element or text selection is being dragged by the user.
 // dragstart: The dragstart event is fired when the user starts dragging an element or text selection.
