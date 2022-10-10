@@ -93,11 +93,6 @@ let eventsGeneral = [
         category: "pointer",
     },
     {
-        type: "pointercancel",
-        title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling. Usually triggered on touch devices.",
-        category: "touch",
-    },
-    {
         type: "pointermove",
         title: "The pointermove event is fired when a pointer changes coordinates, and the pointer has not been canceled by a browser touch-action.",
         category: "pointer",
@@ -121,6 +116,11 @@ let eventsGeneral = [
         type: "pointerleave",
         title: "The pointerleave event is fired when a pointing device is moved out of the hit test boundaries of an element. For pen devices, this event is fired when the stylus leaves the hover range detectable by the digitizer.",
         category: "pointer",
+    },
+    {
+        type: "pointercancel",
+        title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling. Usually triggered on touch devices.",
+        category: "touch",
     },
 ]
 
@@ -146,13 +146,13 @@ let eventsTouchDevices = [
         category: "touch",
     },
     {
-        type: "lostpointercapture",
-        title: "The lostpointercapture event is fired when a captured pointer is released. Similar to the 'pointercancel' event. Usually triggered on touch devices if a touch either leaves an element or turns into a multi-touch pinch-zoom",
+        type: "gotpointercapture",
+        title: "The gotpointercapture event is fired when an element captures a pointer using setPointerCapture().",
         category: "touch",
     },
     {
-        type: "gotpointercapture",
-        title: "The gotpointercapture event is fired when an element captures a pointer using setPointerCapture().",
+        type: "lostpointercapture",
+        title: "The lostpointercapture event is fired when a captured pointer is released. Similar to the 'pointercancel' event. Usually triggered on touch devices if a touch either leaves an element or turns into a multi-touch pinch-zoom",
         category: "touch",
     },
 ]
