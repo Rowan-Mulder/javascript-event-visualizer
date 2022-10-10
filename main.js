@@ -145,62 +145,6 @@ let eventsTouchDevices = [
         title: "The touchcancel event is fired when one or more touch points have been disrupted in an implementation-specific manner (for example, too many touch points are created).",
         category: "touch",
     },
-]
-
-let eventsMouse = [
-    {
-        type: "click", // Only sometimes contains evt.pointerType?
-        title: "An element receives a click event when a pointing device button (such as a mouse's primary mouse button) is both pressed and released while the pointer is located inside the element.",
-        category: "mouse"
-    },
-    {
-        type: "mousedown",
-        title: "The mousedown event is fired at an Element when a pointing device button is pressed while the pointer is inside the element.",
-        category: "mouse",
-    },
-    {
-        type: "mouseup",
-        title: "The mouseup event is fired at an Element when a button on a pointing device (such as a mouse or trackpad) is released while the pointer is located inside it.",
-        category: "mouse",
-    },
-    {
-        type: "mousemove",
-        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
-        category: "mouse",
-    },
-    {
-        type: "mouseover",
-        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
-        category: "mouse",
-    },
-    {
-        type: "mouseenter",
-        title: "The mouseenter event is fired at an Element when a pointing device (usually a mouse) is initially moved so that its hotspot is within the element at which the event was fired.",
-        category: "mouse",
-    },
-    {
-        type: "mouseout",
-        title: "The mouseout event is fired at an Element when a pointing device (usually a mouse) is used to move the cursor so that it is no longer contained within the element or one of its children.",
-        category: "mouse",
-    },
-    {
-        type: "mouseleave",
-        title: "The mouseleave event is fired at an Element when the cursor of a pointing device (usually a mouse) is moved out of it. Unlike 'mouseout' this does not bubble.",
-        category: "mouse",
-    },
-]
-
-let eventsGeneral = [
-    {
-        type: "contextmenu",
-        title: "The contextmenu event fires when the user attempts to open a context menu. This event is typically triggered by clicking the right mouse button, or by pressing the context menu key.",
-        category: "general",
-    },
-    {
-        type: "blur",
-        title: "The blur event fires when an element has lost focus.",
-        category: "general",
-    },
     {
         type: "dblclick",
         title: "The dblclick event fires when a pointing device button (such as a mouse's primary button) is double-clicked; that is, when it's rapidly clicked twice on a single element within a very short span of time.",
