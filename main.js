@@ -256,7 +256,7 @@ function highlightEvent(type) {
 function showPopupInfo(title, popupElement, popupTimer) {
     // Fades in popup info
     clearTimeout(popupTimer)
-    popupElement.innerText = title
+    popupElement.innerText = extremeCharacterDecoder(title)
     popupElement.classList.add("popup-info-visible")
 }
 
