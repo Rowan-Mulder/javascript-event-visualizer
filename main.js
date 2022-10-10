@@ -109,7 +109,7 @@ let eventsGeneral = [
     },
     {
         type: "pointerenter",
-        title: "(slightly different than pointerover) The pointerenter event fires when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a pointerdown event from a device that does not support hover",
+        title: "The pointerenter event fires when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a pointerdown event from a device that does not support hover",
         category: "pointer",
     },
     {
