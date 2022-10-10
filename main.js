@@ -6,8 +6,8 @@ let events = document.getElementById("events")
 let eventsInfo = document.getElementById("events-info")
 let eventsPropertyInfo = document.getElementById("events-property-info")
 
-let eventsInfoTimeout;
-let eventsPropertyInfoTimeout;
+let eventsInfoTimeout
+let eventsPropertyInfoTimeout
 
 
 
