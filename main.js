@@ -94,8 +94,8 @@ let eventsGeneral = [
     },
     {
         type: "pointercancel",
-        title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling.",
-        category: "pointer",
+        title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling. Usually triggered on touch devices.",
+        category: "touch",
     },
     {
         type: "pointermove",
