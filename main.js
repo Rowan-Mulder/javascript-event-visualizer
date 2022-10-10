@@ -268,7 +268,7 @@ function showPopupInfo(title, popupElement, popupTimer, isEncoded) {
 function markEvent(evt, title) {
     let loggingInfoList = []
     if (evt.pointerType) {
-        loggingInfoList.push({text: `pointerType: ${(evt.pointerType) ? evt.pointerType : "undefined (triggered programmatically)"}`, title: "Indicates the device type that caused the event (mouse, pen, touch, etc.)."}) // mouse/pen/touch (javascript triggered: "" for .click(), undefined for .dispatchEvent())
+        loggingInfoList.push({text: `pointerType: ${(evt.pointerType) ? evt.pointerType : "undefined (triggered programmatically)"}`, title: "Indicates the device type that caused the event (mouse, pen, touch, or \"\" if the device type cannot be detected by the browser)."}) // mouse/pen/touch (javascript triggered: "" for .click(), undefined for .dispatchEvent())
     }
     if (evt.isPrimary) {
         loggingInfoList.push({text: `isPrimary: ${evt.isPrimary}`, title: "Indicates if the pointer represents the primary pointer of this pointer type in a multi-pointer scenario (such as a touch screen that supports more than one touch point)"})
