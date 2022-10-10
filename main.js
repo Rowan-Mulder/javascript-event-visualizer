@@ -146,49 +146,9 @@ let eventsTouchDevices = [
         category: "touch",
     },
     {
-        type: "dblclick",
-        title: "The dblclick event fires when a pointing device button (such as a mouse's primary button) is double-clicked; that is, when it's rapidly clicked twice on a single element within a very short span of time.",
-        category: "general  ",
-    },
-    {
-        type: "pointerdown",
-        title: "The pointerdown event is fired when a pointer becomes active. For mouse, it is fired when the device transitions from no buttons pressed to at least one button pressed. For touch, it is fired when physical contact is made with the digitizer. For pen, it is fired when the stylus makes physical contact with the digitizer.",
-        category: "",
-    },
-    {
-        type: "pointerup",
-        title: "The pointerup event is fired when a pointer is no longer active.",
-        category: "",
-    },
-    {
-        type: "pointercancel",
-        title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling.",
-        category: "",
-    },
-    {
-        type: "pointermove",
-        title: "The pointermove event is fired when a pointer changes coordinates, and the pointer has not been canceled by a browser touch-action.",
-        category: "",
-    },
-    {
-        type: "pointerover",
-        title: "The pointerover event is fired when a pointing device is moved into an element's hit test boundaries.",
-        category: "",
-    },
-    {
-        type: "pointerenter",
-        title: "(slightly different than pointerover) The pointerenter event fires when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a pointerdown event from a device that does not support hover",
-        category: "",
-    },
-    {
-        type: "pointerout",
-        title: "The pointerout event is fired for several reasons including: pointing device is moved out of the hit test boundaries of an element; firing the pointerup event for a device that does not support hover (see pointerup); after firing the pointercancel event (see pointercancel); when a pen stylus leaves the hover range detectable by the digitizer.",
-        category: "",
-    },
-    {
-        type: "pointerleave",
-        title: "The pointerleave event is fired when a pointing device is moved out of the hit test boundaries of an element. For pen devices, this event is fired when the stylus leaves the hover range detectable by the digitizer.",
-        category: "",
+        type: "lostpointercapture",
+        title: "The lostpointercapture event is fired when a captured pointer is released. Similar to the 'pointercancel' event. Usually triggered on touch devices if a touch either leaves an element or turns into a multi-touch pinch-zoom",
+        category: "touch",
     },
 ]
 
