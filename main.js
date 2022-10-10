@@ -41,7 +41,7 @@ let eventsMouse = [
     },
     {
         type: "mouseover",
-        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
+        title: "The mouseover event is fired at an Element when a pointing device (such as a mouse or trackpad) is used to move the cursor onto the element or one of its child elements.",
         category: "mouse",
     },
     {
