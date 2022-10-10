@@ -209,18 +209,22 @@ function addEvent(type, title, category) {
     // Log settings
     let row = document.createElement("tr")
 
-    let cellInput = document.createElement("td")
+    let cellInputContainer = document.createElement("td")
     let check = document.createElement("input")
+    check.id = `type-${type}`
     check.type = "checkbox"
     check.checked = defaultIgnoredEventLogs.indexOf(type) === -1
     check.onchange = () => {toggleArrayItem(defaultIgnoredEventLogs, type)}
-    cellInput.appendChild(check)
+    cellInputContainer.appendChild(check)
 
-    let cellLabel = document.createElement("td")
-    cellLabel.innerText = type // insert label element instead
+    let cellLabelContainer = document.createElement("td")
+    let cellLabel = document.createElement("label")
+    cellLabel.innerText = type
+    cellLabel.setAttribute("for", `type-${type}`)
+    cellLabelContainer.appendChild(cellLabel)
 
-    row.appendChild(cellInput)
-    row.appendChild(cellLabel)
+    row.appendChild(cellInputContainer)
+    row.appendChild(cellLabelContainer)
     logSettingsEventSettings.appendChild(row)
 }
 
