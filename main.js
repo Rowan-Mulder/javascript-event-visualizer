@@ -276,7 +276,7 @@ function markEvent(evt, title) {
     if (evt.pressure) { // Pressure of a stylus (interestingly defaulted to 0.5 for PC and 1.0 for mobile).
         loggingInfoList.push({text: `pressure: ${evt.pressure}`, title: "The normalized pressure of the pointer input in the range of 0 to 1, where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively."})
     }
-    if (evt.twist) {
+    if (evt.twist || evt.twist === 0) {
         loggingInfoList.push({text: `twist: ${evt.twist}`, title: "The clockwise rotation of the pointer (e.g. pen stylus) around its major axis in degrees, with a value in the range 0 to 359."})
     }
     if (evt.button || evt.button === 0) {
