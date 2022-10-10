@@ -150,6 +150,11 @@ let eventsTouchDevices = [
         title: "The lostpointercapture event is fired when a captured pointer is released. Similar to the 'pointercancel' event. Usually triggered on touch devices if a touch either leaves an element or turns into a multi-touch pinch-zoom",
         category: "touch",
     },
+    {
+        type: "gotpointercapture",
+        title: "The gotpointercapture event is fired when an element captures a pointer using setPointerCapture().",
+        category: "touch",
+    },
 ]
 
 // Niche events
