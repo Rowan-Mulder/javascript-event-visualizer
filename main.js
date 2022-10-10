@@ -189,9 +189,6 @@ for (let evt of eventsGeneral) {
 for (let evt of eventsTouchDevices) {
     addEvent(evt.type, evt.title, evt.category)
 }
-// for (let evt of eventsPenDevices) {
-//     addEvent(evt.type, evt.title, evt.category)
-// }
 
 
 
