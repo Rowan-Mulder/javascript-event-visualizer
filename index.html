@@ -33,7 +33,27 @@
             </div>
 
             <span id="log-settings" class="hidden">
-                <table id="log-settings-event-settings"></table>
+                <table>
+                    <tbody id="log-settings-event-settings">
+                        <tr class="log-settings-header">
+                            <td colspan="2">General</td>
+                        </tr>
+                        <tr title="Logs more event properties by not hiding the ones with common default values">
+                            <td>
+                                <input id="check-verbose-logging" type="checkbox" checked>
+                            </td>
+                            <td>
+                                <label for="check-verbose-logging">Verbose logging</label>
+                            </td>
+                        </tr>
+                        <tr class="log-settings-divider">
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr class="log-settings-header">
+                            <td colspan="2">Logging</td>
+                        </tr>
+                    </tbody>
+                </table>
             </span>
 
             <div id="info-inner-wrapper">

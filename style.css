@@ -1,3 +1,7 @@
+:root {
+    --log-settings-divider-margin: 10px;
+}
+
 body {
     margin: 0;
 }
@@ -149,6 +153,24 @@ body {
                         .hidden {
                             display: none;
                         }
+                        .log-settings-header {
+                            font-style: italic;
+                            text-align: center;
+                            font-weight: bold;
+                        }
+                        .log-settings-divider {
+                            display: block;
+                            margin-bottom: var(--log-settings-divider-margin);
+                            margin-top: calc(var(--log-settings-divider-margin) / 2);
+                        }
+                            .log-settings-divider > td {
+                                height: 1px;
+                                background: #000;
+                                padding: 0;
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                            }
 
 
 
