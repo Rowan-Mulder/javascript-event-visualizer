@@ -49,43 +49,44 @@ body {
                 background: #000D !important;
                 color: #FFF !important;
             }
-        #events {
-            height: 100%;
+        #events-outer-wrapper {
             display: flex;
-            justify-content: space-between;
-            align-content: center;
-            flex-wrap: wrap;
-            margin-inline: 5vw;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
         }
-            .event {
-                position: relative;
-                padding: 10px;
-                margin: auto;
-                margin-top: 10px;
-                border: 1px solid #000;
-                border-radius: 4px;
-                background-color: #0000;
-                user-select: text;
+            #events-inner-wrapper {
+                overflow-y: auto;
+                padding-inline: 5vw;
             }
-                .event:hover {
-                    box-shadow: inset 0 0 3px 2px #0007;
-                    background: #00000009;
+                .event {
+                    position: relative; /* for the highlight animation */
+                    padding: 10px;
+                    margin: 5px;
+                    border: 1px solid #000;
+                    border-radius: 4px;
+                    background-color: #0000;
+                    user-select: text;
                 }
-                .event-selected {
-                    box-shadow: inset 0 0 0 3px #000;
-                    background: #00000020;
-                }
-                .highlight:before {
-                    content: "";
-                    z-index: -1;
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    animation-name: highlight;
-                    animation-duration: 2s;
-                }
+                    .event:hover {
+                        box-shadow: inset 0 0 3px 2px #0007;
+                        background: #00000009;
+                    }
+                    .event-selected {
+                        box-shadow: inset 0 0 0 3px #000;
+                        background: #00000020;
+                    }
+                    .highlight:before {
+                        content: "";
+                        z-index: -1;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        animation-name: highlight;
+                        animation-duration: 2s;
+                    }
 
     #info-outer-wrapper {
         position: relative;

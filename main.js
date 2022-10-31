@@ -4,7 +4,7 @@ let info = document.getElementById("info")
 let logSettingsEventSettings = document.getElementById("log-settings-event-settings")
 let checkVerboseLogging = document.getElementById("check-verbose-logging")
 let checkPenDeviceLogging = document.getElementById("check-pendevice-logging")
-let events = document.getElementById("events")
+let events = document.getElementById("events-inner-wrapper")
 let eventsInfo = document.getElementById("events-info")
 let eventsPropertyInfo = document.getElementById("events-property-info")
 
