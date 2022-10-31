@@ -56,8 +56,12 @@ body {
             justify-content: center;
         }
             #events-inner-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
                 overflow-y: auto;
                 padding-inline: 5vw;
+                padding-block: 20px;
             }
                 .event {
                     position: relative; /* for the highlight animation */
