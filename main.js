@@ -3,6 +3,7 @@ let infoInnerWrapper = document.getElementById("info-inner-wrapper")
 let info = document.getElementById("info")
 let logSettingsEventSettings = document.getElementById("log-settings-event-settings")
 let checkVerboseLogging = document.getElementById("check-verbose-logging")
+let checkPenDeviceLogging = document.getElementById("check-pendevice-logging")
 let events = document.getElementById("events")
 let eventsInfo = document.getElementById("events-info")
 let eventsPropertyInfo = document.getElementById("events-property-info")
@@ -271,10 +272,10 @@ function markEvent(evt, title) {
     if (evt.isPrimary || (checkVerboseLogging.checked === true && typeof evt.isPrimary === "boolean")) {
         loggingInfoList.push({text: `isPrimary: ${evt.isPrimary}`, title: `Indicates if the pointer represents the primary pointer of this pointer type in a multi-pointer scenario (such as a touch screen that supports more than one touch point)`})
     }
-    if (evt.pressure || (checkVerboseLogging.checked === true && evt.pressure === 0)) { // Pressure of a stylus (interestingly defaulted to 0.5 for PC and 1.0 for mobile).
+    if (typeof evt.pressure === "number" && checkPenDeviceLogging.checked === true) { // Pressure of a stylus (interestingly defaulted to 0.5 for PC and 1.0 for mobile).
         loggingInfoList.push({text: `pressure: ${evt.pressure}`, title: `The normalized pressure of the pointer input in the range of 0 to 1, where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively.`})
     }
-    if (evt.twist || (checkVerboseLogging.checked === true && evt.twist === 0)) {
+    if (typeof evt.twist === "number" && checkPenDeviceLogging.checked === true) {
         loggingInfoList.push({text: `twist: ${evt.twist}`, title: `The clockwise rotation of the pointer (e.g. pen stylus) around its major axis in degrees, with a value in the range 0 to 359.`})
     }
     if (evt.button || (checkVerboseLogging.checked === true && evt.button === 0)) {
