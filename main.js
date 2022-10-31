@@ -17,7 +17,7 @@ let eventsPropertyInfoTimeout
 
 let eventsMouse = [
     {
-        type: "click", // personal experience: Chrome cancels click event if RMB has been released before LMB has, Firefox does not. Chrome doesn't have e.pointerType, while Firefox does.
+        type: "click", // Personal experience: Chrome cancels click event if RMB has been released before LMB has, Firefox does not. Chrome has e.pointerType, while FireFox does not.
         title: "An element receives a click event when a pointing device button (such as a mouse's primary mouse button) is both pressed and released while the pointer is located inside the element. Event property 'pointerType' for this event is not available on Firefox. When you need to check the device type, you could use pointerup instead.",
         category: "mouse"
     },
@@ -1317,3 +1317,9 @@ function decodeCharacter(character) {
             return "UNSUPPORTED"
     }
 }
+
+/*
+    TODO:
+        Event property toggle for mouse-devices (ctrlKey, altKey, shiftKey.)
+        Testing on pen-devices
+*/
