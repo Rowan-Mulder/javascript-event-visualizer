@@ -176,6 +176,7 @@ let defaultIgnoredEventLogs = [
     "mousemove",   "mouseover",   "mouseenter",   "mouseout",   "mouseleave",
     "pointermove", "pointerover", "pointerenter", "pointerout", "pointerleave",
     "touchmove",
+    "focus", "blur"
 ]
 
 
