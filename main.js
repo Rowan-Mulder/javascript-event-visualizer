@@ -298,6 +298,9 @@ function markEvent(evt, title) {
     if (checkMouseDeviceLogging.checked === true && (evt.shiftKey || (checkVerboseLogging.checked === true && typeof evt.shiftKey === "boolean"))) {
         loggingInfoList.push({text: `shiftKey: ${evt.shiftKey}`, title: `Returns true if the shift key was down when the mouse event was fired.`})
     }
+    if (evt.tiltX && evt.tiltY) {
+        loggingInfoList.push({text: `tiltX: ${evt.tiltX} tiltY: ${evt.tiltY}`, title: 'temp'})
+    }
 
     // Logging
     if (defaultIgnoredEventLogs.indexOf(evt.type) === -1) {
