@@ -18,6 +18,38 @@ body {
         position: relative;
         z-index: 200;
     }
+        #btn-system-info {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        #system-info-wrapper {
+            position: absolute;
+            top: 21px;
+            right: 0;
+            height: calc(100% - 22px);
+            overflow-y: auto;
+            border: 1px solid black;
+        }
+            #system-info > table {
+                background: #FFFD;
+                border-collapse: collapse;
+            }
+                #system-info > table td {
+                    padding: 2px 6px;
+                }
+                    #system-info > table tr {
+                        border-bottom: 1px solid #DDD;
+                    }
+                    #system-info > table tr:nth-last-child(1) {
+                        border-bottom: none;
+                    }
+                    #system-info > table td:nth-child(1) {
+                        border-right: 1px solid #888;
+                    }
+                    #system-info > table td:nth-child(2) {
+                        max-width: 300px;
+                    }
         #btn {
             width: 50%;
             height: 50%;

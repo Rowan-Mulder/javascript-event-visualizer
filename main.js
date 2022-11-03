@@ -1,4 +1,5 @@
 let btn = document.getElementById("btn")
+let systemInfo = document.getElementById("system-info")
 let infoInnerWrapper = document.getElementById("info-inner-wrapper")
 let info = document.getElementById("info")
 let logSettingsEventSettings = document.getElementById("log-settings-event-settings")
@@ -398,6 +399,11 @@ document.addEventListener("click", (evt) => {
     // Hides log settings when clicking away
     if (!document.querySelector("#log-settings").classList.contains("hidden") && (!evt.target.closest("#log-settings") && !evt.target.closest("#btn-log-settings"))) {
         toggleVisibility('log-settings')
+    }
+
+    // Hides system info when clicking away
+    if (!document.querySelector("#system-info-wrapper").classList.contains("hidden") && (!evt.target.closest("#system-info-wrapper") && !evt.target.closest("#btn-system-info"))) {
+        toggleVisibility('system-info-wrapper')
     }
 })
 
@@ -1321,6 +1327,73 @@ function decodeCharacter(character) {
             return "UNSUPPORTED"
     }
 }
+
+function init() {
+    let systemInfoTable = document.createElement("table")
+    let systemInfoTbody = document.createElement("tbody")
+
+    let usefulNavigatorKeys = ["appCodeName", "appName", "appVersion", "buildId", "userAgent", "vendor", "vendorSub", "platform", "product", "productSub", "cookieEnabled", "doNotTrack", "language", "maxTouchPoints", "onLine", "oscpu", "hardwareConcurrency", "pdfViewerEnabled", "webdriver"]
+    for (let navigatorKey of usefulNavigatorKeys) {
+        let navigatorKeyValue = eval(`navigator.${navigatorKey}`)
+        if (navigatorKeyValue !== undefined && navigatorKeyValue !== "" && navigatorKeyValue !== null) {
+            let systemInfoTr = document.createElement("tr")
+            let systemInfoTdKey = document.createElement("td")
+            systemInfoTdKey.innerText = navigatorKey
+            let systemInfoTdValue = document.createElement("td")
+            systemInfoTdValue.innerText = navigatorKeyValue
+            systemInfoTr.appendChild(systemInfoTdKey)
+            systemInfoTr.appendChild(systemInfoTdValue)
+            systemInfoTbody.appendChild(systemInfoTr)
+        }
+    }
+
+    let userAgentData = navigator.userAgentData
+    if (userAgentData) {
+        if (userAgentData.brands) {
+            let systemInfoTr = document.createElement("tr")
+            let systemInfoTdKey = document.createElement("td")
+            let systemInfoTdValue = document.createElement("td")
+
+            systemInfoTdKey.innerText = "userAgentData brands"
+            Array.from(userAgentData.brands).forEach((x) => {
+                systemInfoTdValue.innerHTML += `brand: ${x.brand}, version: ${x.version}<br>`
+            })
+
+            systemInfoTr.appendChild(systemInfoTdKey)
+            systemInfoTr.appendChild(systemInfoTdValue)
+            systemInfoTbody.appendChild(systemInfoTr)
+        }
+        if (typeof userAgentData.mobile === "boolean") {
+            let systemInfoTr = document.createElement("tr")
+            let systemInfoTdKey = document.createElement("td")
+            let systemInfoTdValue = document.createElement("td")
+
+            systemInfoTdKey.innerText = "userAgentData mobile"
+            systemInfoTdValue.innerText = userAgentData.mobile
+
+            systemInfoTr.appendChild(systemInfoTdKey)
+            systemInfoTr.appendChild(systemInfoTdValue)
+            systemInfoTbody.appendChild(systemInfoTr)
+        }
+        if (userAgentData.platform) {
+            let systemInfoTr = document.createElement("tr")
+            let systemInfoTdKey = document.createElement("td")
+            let systemInfoTdValue = document.createElement("td")
+
+            systemInfoTdKey.innerText = "userAgentData platform"
+            systemInfoTdValue.innerText = userAgentData.platform
+
+            systemInfoTr.appendChild(systemInfoTdKey)
+            systemInfoTr.appendChild(systemInfoTdValue)
+            systemInfoTbody.appendChild(systemInfoTr)
+        }
+    }
+
+    systemInfoTable.appendChild(systemInfoTbody)
+    systemInfo.appendChild(systemInfoTable)
+}
+
+init()
 
 /*
     TODO:
