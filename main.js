@@ -24,6 +24,11 @@ let eventsMouse = [
         category: "mouse"
     },
     {
+        type: "auxclick",
+        title: "The auxclick event is fired at an Element when a non-primary pointing device button (any mouse button other than the primary—usually leftmost—button) has been pressed and released both within the same element.",
+        category: "mouse"
+    },
+    {
         type: "wheel",
         title: "The wheel event fires when the user rotates a wheel button on a pointing device (typically a mouse).",
         category: "mouse",
