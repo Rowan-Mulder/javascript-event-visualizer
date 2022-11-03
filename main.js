@@ -298,6 +298,9 @@ function markEvent(evt, title) {
     if (checkMouseDeviceLogging.checked === true && (evt.shiftKey || (checkVerboseLogging.checked === true && typeof evt.shiftKey === "boolean"))) {
         loggingInfoList.push({text: `shiftKey: ${evt.shiftKey}`, title: `Returns true if the shift key was down when the mouse event was fired.`})
     }
+    if (checkMouseDeviceLogging.checked === true && (evt.metaKey || (checkVerboseLogging.checked === true && typeof evt.metaKey === "boolean"))) {
+        loggingInfoList.push({text: `metaKey: ${evt.metaKey}`, title: `Returns true if the meta key was down when the mouse event was fired. On Windows keyboards, this key is the Windows key (⊞). On Macintosh keyboards, this key is the command key (⌘). Be aware that many operating systems bind special functionality to the meta key, so this property may be false even when the key is actually pressed. On Windows, for example, this key may open the Start menu.`})
+    }
     if (checkPenDeviceLogging.checked === true && typeof evt.pressure === "number") { // Pressure of a stylus (interestingly defaulted to 0.5 for PC and 1.0 for mobile).
         loggingInfoList.push({text: `pressure: ${evt.pressure}`, title: `The normalized pressure of the pointer input in the range of 0 to 1, where 0 and 1 represent the minimum and maximum pressure the hardware is capable of detecting, respectively.`})
     }
