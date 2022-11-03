@@ -360,11 +360,7 @@ function toggleVisibility(id) {
         console.error(`element ${id} couldn't be found`)
         return
     }
-    if (el.classList.contains("hidden")) {
-        el.classList.remove("hidden")
-    } else {
-        el.classList.add("hidden")
-    }
+    el.classList.toggle("hidden")
 }
 
 function toggleArrayItem(array, item) {
