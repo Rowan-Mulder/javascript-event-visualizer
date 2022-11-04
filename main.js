@@ -15,153 +15,180 @@ let eventsPropertyInfoTimeout
 
 
 
-// Event title info source: https://developer.mozilla.org/
+// Event title info source: https://developer.mozilla.org/ with some slight personal modifications/additions.
+// Additionally, event data will contain 'pointer' and 'category'.
+//      'pointer': The pointer type that's capable of triggering the event. For example; I could assume that mouse events wouldn't be triggered by touch/pen pointer types, but that's not always the case. While functionality cross devices may differ from expectations, it's technically possible.
+//     'category': The pointer type for which the event is primarily recommended. Unlike 'pointer', this doesn't mean you wouldn't be able to trigger the event with a different pointer type.
 
-let eventsMouse = [
+let eventsData = [
     {
         type: "click", // Personal experience: Chrome cancels click event if RMB has been released before LMB has, Firefox does not. Chrome has e.pointerType, while FireFox does not.
         title: "An element receives a click event when a pointing device button (such as a mouse's primary mouse button) is both pressed and released while the pointer is located inside the element. Event property 'pointerType' for this event is not available on Firefox. If you need to check the device type which triggered the event, you may want to use pointerup instead for the pointerType event property.",
-        category: "mouse"
+        pointer: "general",
+        category: "general"
     },
-    {
-        type: "auxclick",
-        title: "The auxclick event is fired at an Element when a non-primary pointing device button (any mouse button other than the primary—usually leftmost—button) has been pressed and released both within the same element.",
-        category: "mouse"
-    },
-    {
-        type: "wheel",
-        title: "The wheel event fires when the user rotates a wheel button on a pointing device (typically a mouse).",
-        category: "mouse",
-    },
-    {
-        type: "mousedown",
-        title: "The mousedown event is fired at an Element when a pointing device button is pressed while the pointer is inside the element.",
-        category: "mouse",
-    },
-    {
-        type: "mouseup",
-        title: "The mouseup event is fired at an Element when a button on a pointing device (such as a mouse or trackpad) is released while the pointer is located inside it.",
-        category: "mouse",
-    },
-    {
-        type: "mousemove",
-        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
-        category: "mouse",
-    },
-    {
-        type: "mouseover",
-        title: "The mouseover event is fired at an Element when a pointing device (such as a mouse or trackpad) is used to move the cursor onto the element or one of its child elements.",
-        category: "mouse",
-    },
-    {
-        type: "mouseenter",
-        title: "The mouseenter event is fired at an Element when a pointing device (usually a mouse) is initially moved so that its hotspot is within the element at which the event was fired.",
-        category: "mouse",
-    },
-    {
-        type: "mouseout",
-        title: "The mouseout event is fired at an Element when a pointing device (usually a mouse) is used to move the cursor so that it is no longer contained within the element or one of its children.",
-        category: "mouse",
-    },
-    {
-        type: "mouseleave",
-        title: "The mouseleave event is fired at an Element when the cursor of a pointing device (usually a mouse) is moved out of it. Unlike 'mouseout' this does not bubble.",
-        category: "mouse",
-    },
-]
-
-let eventsGeneral = [
     {
         type: "contextmenu",
         title: "The contextmenu event fires when the user attempts to open a context menu. This event is typically triggered by clicking the right mouse button, or by pressing the context menu key.",
-        category: "general",
-    },
-    {
-        type: "dblclick",
-        title: "The dblclick event fires when a pointing device button (such as a mouse's primary button) is double-clicked; that is, when it's rapidly clicked twice on a single element within a very short span of time.",
+        pointer: "general",
         category: "general",
     },
     {
         type: "focus",
         title: "The focus event fires when an element has received focus. The event does not bubble, but the related focusin event that follows does bubble.",
+        pointer: "general",
         category: "general",
     },
     {
         type: "blur",
         title: "The blur event fires when an element has lost focus.",
+        pointer: "general",
         category: "general",
+    },
+    {
+        type: "mousedown",
+        title: "The mousedown event is fired at an Element when a pointing device button is pressed while the pointer is inside the element.",
+        pointer: "general",
+        category: "mouse",
+    },
+    {
+        type: "mouseup",
+        title: "The mouseup event is fired at an Element when a button on a pointing device (such as a mouse or trackpad) is released while the pointer is located inside it.",
+        pointer: "general",
+        category: "mouse",
+    },
+    {
+        type: "mousemove",
+        title: "The mousemove event is fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it.",
+        pointer: "general",
+        category: "mouse",
+    },
+    {
+        type: "mouseover",
+        title: "The mouseover event is fired at an Element when a pointing device (such as a mouse or trackpad) is used to move the cursor onto the element or one of its child elements.",
+        pointer: "general",
+        category: "mouse",
+    },
+    {
+        type: "mouseenter",
+        title: "The mouseenter event is fired at an Element when a pointing device (usually a mouse) is initially moved so that its hotspot is within the element at which the event was fired.",
+        pointer: "general",
+        category: "mouse",
+    },
+    {
+        type: "mouseout",
+        title: "The mouseout event is fired at an Element when a pointing device (usually a mouse) is used to move the cursor so that it is no longer contained within the element or one of its children.",
+        pointer: "general",
+        category: "mouse",
+    },
+    {
+        type: "mouseleave",
+        title: "The mouseleave event is fired at an Element when the cursor of a pointing device (usually a mouse) is moved out of it. Unlike 'mouseout' this does not bubble.",
+        pointer: "general",
+        category: "mouse",
     },
     {
         type: "pointerdown",
         title: "The pointerdown event is fired when a pointer becomes active. For mouse, it is fired when the device transitions from no buttons pressed to at least one button pressed. For touch, it is fired when physical contact is made with the digitizer. For pen, it is fired when the stylus makes physical contact with the digitizer.",
-        category: "pointer",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointerup",
         title: "The pointerup event is fired when a pointer is no longer active.",
-        category: "pointer",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointermove",
         title: "The pointermove event is fired when a pointer changes coordinates, and the pointer has not been canceled by a browser touch-action.",
-        category: "pointer",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointerover",
         title: "The pointerover event is fired when a pointing device is moved into an element's hit test boundaries.",
-        category: "pointer",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointerenter",
-        title: "The pointerenter event fires when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a pointerdown event from a device that does not support hover",
-        category: "pointer",
+        title: "The pointerenter event fires when a pointing device is moved into the hit test boundaries of an element or one of its descendants, including as a result of a pointerdown event from a device that does not support hover.",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointerout",
         title: "The pointerout event is fired for several reasons including: pointing device is moved out of the hit test boundaries of an element; firing the pointerup event for a device that does not support hover (see pointerup); after firing the pointercancel event (see pointercancel); when a pen stylus leaves the hover range detectable by the digitizer.",
-        category: "pointer",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointerleave",
         title: "The pointerleave event is fired when a pointing device is moved out of the hit test boundaries of an element. For pen devices, this event is fired when the stylus leaves the hover range detectable by the digitizer.",
-        category: "pointer",
+        pointer: "general",
+        category: "general",
     },
     {
         type: "pointercancel",
         title: "The pointercancel event is fired when the browser determines that there are unlikely to be any more pointer events, or if after the pointerdown event is fired, the pointer is then used to manipulate the viewport by panning, zooming, or scrolling. Usually triggered on touch devices.",
+        pointer: "touch", // Among other pointer events, I'd presume this would be aimed and supported to generally any device, but that's apparently not the case.
         category: "touch",
     },
-]
 
-let eventsTouchDevices = [
+    {
+        type: "dblclick",
+        title: "The dblclick event fires when a pointing device button (such as a mouse's primary button) is double-clicked; that is, when it's rapidly clicked twice on a single element within a very short span of time.",
+        pointer: "mouse", // A double-tap on touch/pen devices will zoom the page in and won't trigger dblclick.
+        category: "mouse",
+    },
+    {
+        type: "auxclick",
+        title: "The auxclick event is fired at an Element when a non-primary pointing device button (any mouse button other than the primary—usually leftmost—button) has been pressed and released both within the same element.",
+        pointer: "mouse",
+        category: "mouse"
+    },
+    {
+        type: "wheel",
+        title: "The wheel event fires when the user rotates a wheel button on a pointing device (typically a mouse).",
+        pointer: "mouse",
+        category: "mouse",
+    },
+
     {
         type: "touchstart",
         title: "The touchstart event is fired when one or more touch points are placed on the touch surface.",
+        pointer: "touch",
         category: "touch",
     },
     {
         type: "touchend",
         title: "The touchend event fires when one or more touch points are removed from the touch surface.",
+        pointer: "touch",
         category: "touch",
     },
     {
         type: "touchmove",
         title: "The touchmove event is fired when one or more touch points are moved along the touch surface.",
+        pointer: "touch",
         category: "touch",
     },
     {
         type: "touchcancel",
         title: "The touchcancel event is fired when one or more touch points have been disrupted in an implementation-specific manner (for example, too many touch points are created).",
+        pointer: "touch",
         category: "touch",
     },
     {
         type: "gotpointercapture",
         title: "The gotpointercapture event is fired when an element captures a pointer using setPointerCapture().",
+        pointer: "touch",
         category: "touch",
     },
     {
         type: "lostpointercapture",
-        title: "The lostpointercapture event is fired when a captured pointer is released. Similar to the 'pointercancel' event. Usually triggered on touch devices if a touch either leaves an element or turns into a multi-touch pinch-zoom",
+        title: "The lostpointercapture event is fired when a captured pointer is released. Similar to the 'pointercancel' event. Usually triggered on touch devices if a touch either leaves an element or turns into a multi-touch pinch-zoom.",
+        pointer: "touch",
         category: "touch",
     },
 ]
@@ -178,6 +205,7 @@ let eventsTouchDevices = [
 // drop: The drop event is fired when an element or text selection is dropped on a valid drop target.
 
 
+// These events won't be logged by default, but could be enabled manually in the log settings.
 let defaultIgnoredEventLogs = [
     "wheel",
     "mousemove",   "mouseover",   "mouseenter",   "mouseout",   "mouseleave",
@@ -190,19 +218,13 @@ let defaultIgnoredEventLogs = [
 
 
 
-for (let evt of eventsMouse) {
-    addEvent(evt.type, evt.title, evt.category)
-}
-for (let evt of eventsGeneral) {
-    addEvent(evt.type, evt.title, evt.category)
-}
-for (let evt of eventsTouchDevices) {
-    addEvent(evt.type, evt.title, evt.category)
+for (let evt of eventsData) {
+    addEvent(evt.type, evt.title, evt.pointer, evt.category)
 }
 
 
 
-function addEvent(type, title, category) {
+function addEvent(type, title, pointer, category) {
     btn.addEventListener(type, (evt) => {
         markEvent(evt, title)
     })
