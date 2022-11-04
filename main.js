@@ -1364,7 +1364,7 @@ function init() {
 function addBrowserNavigatorData() {
     let usefulNavigatorKeysCompatible = ["userAgent", "cookieEnabled", "language", "maxTouchPoints", "onLine", "hardwareConcurrency", "pdfViewerEnabled", "webdriver"]
     let usefulNavigatorKeysDeprecated = ["appCodeName", "appName", "appVersion", "vendor", "vendorSub", "platform", "product", "productSub", "doNotTrack", "oscpu"]
-    let usefulNavigatorKeysNonstandard = ["buildId"]
+    let usefulNavigatorKeysNonstandard = ["buildID"]
 
     let addBrowserNavigatorDataRow = (navigatorKey, compatibility) => {
         let navigatorKeyValue = eval(`navigator.${navigatorKey}`)
@@ -1374,7 +1374,7 @@ function addBrowserNavigatorData() {
             if (compatibility !== "compatible") {
                 systemInfoTr.classList.add("hidden")
             }
-            systemInfoTr.style.background = (compatibility === "compatible") ? "none" : (compatibility === "deprecated") ? "#F002" : (compatibility === "nonstandard") ? "0FF2" : (compatibility === "experimental") ? "#FF02" : "none"
+            systemInfoTr.style.background = (compatibility === "compatible") ? "none" : (compatibility === "deprecated") ? "#F002" : (compatibility === "nonstandard") ? "#0FF2" : (compatibility === "experimental") ? "#FF02" : "none"
             // systemInfoTr.title = `navigator compatibility: ${compatibility}`
             let systemInfoTdKey = document.createElement("td")
             systemInfoTdKey.innerText = navigatorKey
