@@ -440,6 +440,7 @@ document.addEventListener(("contextmenu"), (evt) => {
     }
 })
 
+
 function extremeCharacterEncoder(inputString) {
     let convertedString = ""
     for (let i = 0; i < inputString.length; i++) {
@@ -1353,6 +1354,7 @@ function decodeCharacter(character) {
             return "UNSUPPORTED"
     }
 }
+
 
 function init() {
     addBrowserNavigatorData()
