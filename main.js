@@ -1375,7 +1375,7 @@ function addBrowserNavigatorData() {
                 systemInfoTr.classList.add("hidden")
             }
             systemInfoTr.style.background = (compatibility === "compatible") ? "none" : (compatibility === "deprecated") ? "#F002" : (compatibility === "nonstandard") ? "0FF2" : (compatibility === "experimental") ? "#FF02" : "none"
-            systemInfoTr.title = `navigator compatibility: ${compatibility}`
+            // systemInfoTr.title = `navigator compatibility: ${compatibility}`
             let systemInfoTdKey = document.createElement("td")
             systemInfoTdKey.innerText = navigatorKey
             let systemInfoTdValue = document.createElement("td")
