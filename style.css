@@ -34,6 +34,7 @@ body {
             #system-info > table {
                 background: #FFFD;
                 border-collapse: collapse;
+                line-break: anywhere;
             }
                 #system-info > table td {
                     padding: 2px 6px;
