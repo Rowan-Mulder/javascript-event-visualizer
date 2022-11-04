@@ -18,7 +18,30 @@
         <div id="btn-wrapper">
             <button onclick="toggleVisibility('system-info-wrapper')" id="btn-system-info">System info</button>
             <div id="system-info-wrapper" class="hidden">
-                <div id="system-info"></div>
+                <div id="system-info">
+                    <table>
+                        <tbody id="system-info-tbody">
+                            <tr style="border-bottom: none">
+                                <td colspan="2" style="border-right: none">
+                                    <input id="check-navigator-compatibility-deprecated" type="checkbox" onclick="toggleNavigatorDataRow('deprecated')" checked>
+                                    <label for="check-navigator-compatibility-deprecated">Hide deprecated</label>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: none">
+                                <td colspan="2" style="border-right: none">
+                                    <input id="check-navigator-compatibility-experimental" type="checkbox" onclick="toggleNavigatorDataRow('experimental')" checked>
+                                    <label for="check-navigator-compatibility-experimental">Hide experimental</label>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #000">
+                                <td colspan="2" style="border-right: none">
+                                    <input id="check-navigator-compatibility-nonstandard" type="checkbox" onclick="toggleNavigatorDataRow('nonstandard')" checked>
+                                    <label for="check-navigator-compatibility-nonstandard">Hide nonstandard</label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <button id="btn">Button</button>

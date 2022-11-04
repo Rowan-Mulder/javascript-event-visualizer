@@ -27,7 +27,7 @@ body {
             position: absolute;
             top: 21px;
             right: 0;
-            height: calc(100% - 22px);
+            max-height: calc(100% - 22px);
             overflow-y: auto;
             border: 1px solid black;
         }

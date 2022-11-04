@@ -1,5 +1,5 @@
 let btn = document.getElementById("btn")
-let systemInfo = document.getElementById("system-info")
+let systemInfoTbody = document.getElementById("system-info-tbody")
 let infoInnerWrapper = document.getElementById("info-inner-wrapper")
 let info = document.getElementById("info")
 let logSettingsEventSettings = document.getElementById("log-settings-event-settings")
@@ -1333,14 +1333,25 @@ function decodeCharacter(character) {
 }
 
 function init() {
-    let systemInfoTable = document.createElement("table")
-    let systemInfoTbody = document.createElement("tbody")
+    addBrowserNavigatorData()
+}
 
-    let usefulNavigatorKeys = ["appCodeName", "appName", "appVersion", "buildId", "userAgent", "vendor", "vendorSub", "platform", "product", "productSub", "cookieEnabled", "doNotTrack", "language", "maxTouchPoints", "onLine", "oscpu", "hardwareConcurrency", "pdfViewerEnabled", "webdriver"]
-    for (let navigatorKey of usefulNavigatorKeys) {
+// The Navigator interface represents the state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities.
+function addBrowserNavigatorData() {
+    let usefulNavigatorKeysCompatible = ["userAgent", "cookieEnabled", "language", "maxTouchPoints", "onLine", "hardwareConcurrency", "pdfViewerEnabled", "webdriver"]
+    let usefulNavigatorKeysDeprecated = ["appCodeName", "appName", "appVersion", "vendor", "vendorSub", "platform", "product", "productSub", "doNotTrack", "oscpu"]
+    let usefulNavigatorKeysNonstandard = ["buildId"]
+
+    let addBrowserNavigatorDataRow = (navigatorKey, compatibility) => {
         let navigatorKeyValue = eval(`navigator.${navigatorKey}`)
         if (navigatorKeyValue !== undefined && navigatorKeyValue !== "" && navigatorKeyValue !== null) {
             let systemInfoTr = document.createElement("tr")
+            systemInfoTr.classList.add(`navigator-compatibility-${compatibility}`)
+            if (compatibility !== "compatible") {
+                systemInfoTr.classList.add("hidden")
+            }
+            systemInfoTr.style.background = (compatibility === "compatible") ? "none" : (compatibility === "deprecated") ? "#F002" : (compatibility === "nonstandard") ? "0FF2" : (compatibility === "experimental") ? "#FF02" : "none"
+            systemInfoTr.title = `navigator compatibility: ${compatibility}`
             let systemInfoTdKey = document.createElement("td")
             systemInfoTdKey.innerText = navigatorKey
             let systemInfoTdValue = document.createElement("td")
@@ -1351,12 +1362,28 @@ function init() {
         }
     }
 
+
+    // Compatible navigator properties
+    for (let navigatorKey of usefulNavigatorKeysCompatible) addBrowserNavigatorDataRow(navigatorKey, "compatible")
+
+    // Deprecated navigator properties
+    for (let navigatorKey of usefulNavigatorKeysDeprecated) addBrowserNavigatorDataRow(navigatorKey, "deprecated")
+
+    // Non-standard navigator properties
+    for (let navigatorKey of usefulNavigatorKeysNonstandard) addBrowserNavigatorDataRow(navigatorKey, "nonstandard")
+
+
+    //*/ userAgentData (experimental)
     let userAgentData = navigator.userAgentData
     if (userAgentData) {
         if (userAgentData.brands) {
             let systemInfoTr = document.createElement("tr")
             let systemInfoTdKey = document.createElement("td")
             let systemInfoTdValue = document.createElement("td")
+            systemInfoTr.classList.add("navigator-experimental")
+            systemInfoTr.classList.add("hidden")
+            systemInfoTr.style.background = "#FF02"
+            systemInfoTr.title = "navigator compatibility: experimental"
 
             systemInfoTdKey.innerText = "userAgentData brands"
             Array.from(userAgentData.brands).forEach((x) => {
@@ -1392,9 +1419,14 @@ function init() {
             systemInfoTbody.appendChild(systemInfoTr)
         }
     }
+    //*/
+}
 
-    systemInfoTable.appendChild(systemInfoTbody)
-    systemInfo.appendChild(systemInfoTable)
+// Toggles visibility of the navigator data rows of a specific compatibility (compatible/deprecated/experimental/nonstandard).
+function toggleNavigatorDataRow(compatibility) {
+    for (let navigatorDataRow of document.querySelectorAll(`.navigator-compatibility-${compatibility}`)) {
+        navigatorDataRow.classList.toggle("hidden")
+    }
 }
 
 init()
