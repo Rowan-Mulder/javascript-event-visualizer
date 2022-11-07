@@ -901,6 +901,10 @@ function encodeCharacter(character) {
             return "%FE"
         case "ÿ":
             return "%FF"
+        case "⊞":
+            return "⊞⊞⊞"
+        case "⌘":
+            return "⌘⌘⌘"
         default:
             return "UNSUPPORTED"
     }
@@ -1350,6 +1354,10 @@ function decodeCharacter(character) {
             return "þ"
         case "%FF":
             return "ÿ"
+        case "⊞⊞⊞":
+            return "⊞"
+        case "⌘⌘⌘":
+            return "⌘"
         default:
             return "UNSUPPORTED"
     }
