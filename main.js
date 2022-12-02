@@ -299,10 +299,10 @@ function markEvent(evt, title) {
     if (evt.pointerType) {
         loggingInfoList.push({text: `pointerType: ${(evt.pointerType) ? evt.pointerType : "undefined (triggered programmatically)"}`, title: `Indicates the device type that caused the event (mouse, pen, touch, or "" if the device type cannot be detected by the browser).`}) // mouse/pen/touch (javascript triggered: "" for .click(), undefined for .dispatchEvent())
     }
-    if (evt.button || (checkVerboseLogging.checked === true && evt.button === 0)) {
+    if (evt.button || evt.button === 0) {
         loggingInfoList.push({text: `button: ${evt.button}`, title: `The button number that was pressed (if applicable) when the mouse event was fired.`}) // Seems to be -1 for contextmenu, pointermove and gotpointercapture events on mobile
     }
-    if (evt.buttons || (checkVerboseLogging.checked === true && evt.buttons === 0)) {
+    if (evt.buttons || evt.buttons === 0) {
         loggingInfoList.push({text: `buttons: ${evt.buttons}`, title: `The buttons being pressed (if any) when the mouse event was fired.`})
     }
     if (evt.isPrimary || (checkVerboseLogging.checked === true && typeof evt.isPrimary === "boolean")) {
