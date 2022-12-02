@@ -47,6 +47,7 @@ body {
                     }
                     #system-info > table td:nth-child(1) {
                         border-right: 1px solid #888;
+                        white-space: nowrap;
                     }
                     #system-info > table td:nth-child(2) {
                         max-width: 300px;
